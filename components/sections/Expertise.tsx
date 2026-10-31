@@ -54,7 +54,7 @@ export default function Expertise() {
   );
 
   return (
-    <section ref={root} id="services" className="relative overflow-hidden py-24 lg:h-screen lg:py-0">
+    <section ref={root} id="services" className="relative overflow-hidden pt-24 lg:h-screen lg:pt-0">
       <div className="shell relative lg:h-full">
         {/* Neon ring */}
         <div className="relative mx-auto aspect-square w-[min(88vw,520px)] lg:absolute lg:left-1/2 lg:top-1/2 lg:w-[min(68vh,560px)] lg:-translate-x-1/2 lg:-translate-y-1/2">

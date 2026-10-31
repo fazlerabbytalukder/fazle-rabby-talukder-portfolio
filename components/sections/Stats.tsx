@@ -19,7 +19,7 @@ const offsets: Record<Stat["from"], { x: number; y: number }> = {
 
 export default function Stats() {
   return (
-    <section id="about" className="relative py-28 lg:py-40">
+    <section id="about" className="relative overflow-x-clip pt-24 lg:pt-32">
       <div className="shell grid gap-16 lg:grid-cols-2 lg:items-center lg:gap-20">
         {/* Checkerboard stat grid */}
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 lg:grid-rows-3">

@@ -20,7 +20,8 @@ export default function RotatingBadge({ text, size = 120, className = "", childr
         <defs>
           <path id={id} d="M50,50 m-40,0 a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0" />
         </defs>
-        <text className="fill-white/80 font-sans text-[8px] font-medium uppercase">
+        {/* whiteSpace: pre keeps the trailing space, so the last separator sits evenly between words */}
+        <text className="fill-white/80 font-sans text-[8px] font-medium uppercase" style={{ whiteSpace: "pre" }}>
           <textPath href={`#${id}`} textLength="250" lengthAdjust="spacing">
             {text}
           </textPath>

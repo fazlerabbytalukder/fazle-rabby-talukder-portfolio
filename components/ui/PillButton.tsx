@@ -13,14 +13,14 @@ type Props = {
 export default function PillButton({ href, label, variant = "outline", className = "" }: Props) {
   const ring =
     variant === "glow"
-      ? "border-transparent [background:linear-gradient(var(--color-ink),var(--color-ink))_padding-box,linear-gradient(90deg,#FF2D55,#2F6BFF)_border-box] shadow-[0_0_24px_-6px_rgba(255,45,85,0.6)]"
-      : "border-white/25 hover:border-white/60 hover:bg-white/5";
+      ? "glow-pill px-6 py-3 text-[11px] font-bold tracking-[0.06em]"
+      : "border border-white/25 px-5 py-2.5 text-[10px] font-semibold tracking-[0.22em] hover:border-white/60 hover:bg-white/5";
 
   return (
     <MagneticButton>
       <a
         href={href}
-        className={`group inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-white transition-colors duration-300 ${ring} ${className}`}
+        className={`group inline-flex items-center gap-2 rounded-full uppercase text-white transition-colors duration-300 ${ring} ${className}`}
       >
         {label}
         <span className="overflow-hidden">

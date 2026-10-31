@@ -73,7 +73,7 @@ function ProjectRow({ project, reverse }: { project: Project; reverse: boolean }
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative py-24 lg:py-32">
+    <section id="projects" className="relative pt-24 lg:pt-32">
       <div className="shell mb-14 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <SectionHeading title={projectsIntro.title} accent={projectsIntro.titleAccent} subtitle={projectsIntro.subtitle} />
         <Reveal y={20}>

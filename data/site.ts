@@ -32,12 +32,12 @@ export const footerLinks = [
 ];
 
 export const hero = {
-  lineLeft: "From Idea",
-  lineRight: "To Impact",
-  eyebrow: "Fazle Rabby Talukder — Product Manager",
-  title: "Building Products at the Intersection of AI,",
-  titleAccent: "Creativity & Technology",
-  body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus magna vitae lorem tristique.",
+  lineLeft: "From Concept",
+  lineRight: "To Creation",
+  /** One entry per line */
+  title: ["Turning ideas into functional,", "and scalable digital products"],
+  titleAccent: "Front End Focus Full Stack Developer",
+  body: "I build modern, responsive, and user-focused web applications by combining creative UI/UX thinking with powerful frontend technologies and reliable backend solutions.",
 };
 
 export const about = {

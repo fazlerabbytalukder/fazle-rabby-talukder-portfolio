@@ -6,7 +6,8 @@ const unsplash = (id: string, w = 1200) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 export const images = {
-  heroPortrait: unsplash("photo-1507003211169-0a1dd7228f2d", 1400),
+  // Background removed — transparent PNG cut-out
+  heroPortrait: "/images/hero-portrait.png",
   aboutPortrait: unsplash("photo-1500648767791-00dcc994a43e", 500),
   experiencePortrait: unsplash("photo-1506794778202-cad84cf45f1d", 1400),
   ctaPortrait: unsplash("photo-1492562080023-ab3db95bfbce", 1400),

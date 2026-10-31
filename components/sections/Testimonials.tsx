@@ -45,7 +45,7 @@ export default function Testimonials() {
   useEffect(() => goTo(index), [metrics]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <section id="reviews" className="relative overflow-hidden py-24 lg:py-32">
+    <section id="reviews" className="relative overflow-hidden pt-24 lg:pt-32">
       <div className="shell flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <SectionHeading title={testimonialsIntro.title} accent={testimonialsIntro.titleAccent} subtitle={testimonialsIntro.subtitle} breakAccent />
         <div className="flex gap-3">

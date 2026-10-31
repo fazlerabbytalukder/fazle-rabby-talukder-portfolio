@@ -42,7 +42,7 @@ export const Plus = ({ className = "h-3.5 w-3.5" }: IconProps) => (
 
 export const Menu = ({ className = "h-3.5 w-3.5" }: IconProps) => (
   <svg viewBox="0 0 24 24" className={className} {...base}>
-    <path d="M4 8h16M4 16h16" />
+    <path d="M4 6.5h16M8 12h12M12 17.5h8" />
   </svg>
 );
 

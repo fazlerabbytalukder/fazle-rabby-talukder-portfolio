@@ -56,7 +56,7 @@ export default function Experience() {
   );
 
   return (
-    <section ref={root} id="experience" className="relative overflow-hidden py-24 lg:py-36">
+    <section ref={root} id="experience" className="relative overflow-hidden pt-24 lg:pt-32">
       <div className="shell grid items-center gap-16 lg:grid-cols-2">
         <div>
           <SectionHeading title={experienceIntro.title} accent={experienceIntro.titleAccent} subtitle={experienceIntro.subtitle} />

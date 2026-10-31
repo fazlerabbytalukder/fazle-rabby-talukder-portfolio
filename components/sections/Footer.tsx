@@ -3,7 +3,7 @@ import { footer, footerLinks, site } from "@/data/site";
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-white/5 pb-8 pt-20">
+    <footer id="footer" className="relative border-t border-white/5 pb-8 pt-20">
       <div className="shell text-center">
         <Reveal>
           <p className="font-display text-7xl leading-none tracking-wide md:text-9xl">

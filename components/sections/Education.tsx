@@ -13,7 +13,7 @@ function trackMouse(e: React.MouseEvent<HTMLElement>) {
 
 export default function Education() {
   return (
-    <section id="education" className="relative py-24 lg:py-32">
+    <section id="education" className="relative pt-24 lg:pt-32">
       <div className="shell">
         <SectionHeading
           title="My"

@@ -58,7 +58,7 @@ export default function Navbar() {
               onClick={() => setOpen(true)}
               aria-expanded={open}
               aria-controls="site-menu"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.22em] transition-colors hover:border-white/60 hover:bg-white/5"
+              className="glow-pill inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.06em]"
             >
               <Menu /> Menu
             </button>
@@ -88,7 +88,7 @@ export default function Navbar() {
                 <ThemeToggle />
                 <button
                   onClick={() => setOpen(false)}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.22em] hover:border-white/60"
+                  className="glow-pill inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.06em]"
                 >
                   <Close className="h-3.5 w-3.5" /> Close
                 </button>

@@ -53,10 +53,15 @@
   color: var(--color-white);
 }
 
-/* Max-width content wrapper (~1200px) */
+/* Hero scale unit: 1/83 of the shell's content width (the design's grid), capped with the 1400px shell */
+:root {
+  --u: min(calc((100vw - 4rem) / 83), 16.1px);
+}
+
+/* Max-width content wrapper (~1400px) */
 @utility shell {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin-inline: auto;
   padding-inline: 1rem;
   @media (width >= 768px) {
@@ -82,6 +87,13 @@ body {
   transition: background-color 0.4s var(--ease-premium), color 0.4s var(--ease-premium);
 }
 
+/* Tailwind's preflight resets buttons to the default arrow */
+button:not(:disabled),
+[role="button"],
+a[href] {
+  cursor: pointer;
+}
+
 ::selection {
   background: var(--color-neon);
   color: var(--color-snow);
@@ -94,6 +106,38 @@ body {
     radial-gradient(50% 40% at 95% 30%, rgb(47 107 255 / 0.06), transparent 70%),
     linear-gradient(to right, color-mix(in srgb, var(--color-white) 3.5%, transparent) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, calc(100% / 6) 100%;
+}
+
+/* ---------- Hero: fluted vertical panels (dark hairline, bright edge fading out) ---------- */
+.hero-flutes {
+  --p: max(14px, calc(var(--u) * 1.38));
+  background-image: repeating-linear-gradient(
+    to right,
+    rgb(0 0 0 / 0.4) 0 1px,
+    color-mix(in srgb, var(--color-white) 9%, transparent) 1px 2px,
+    color-mix(in srgb, var(--color-white) 3.5%, transparent) 2px 4px,
+    transparent 4px calc(var(--p) - 4px),
+    rgb(0 0 0 / 0.15) calc(var(--p) - 4px) var(--p)
+  );
+  mask-image: linear-gradient(to bottom, #000 30%, rgb(0 0 0 / 0.6) 75%, transparent);
+}
+[data-theme="light"] .hero-flutes {
+  opacity: 0.35;
+}
+
+/* ---------- Glow pill: blue→red gradient border with a soft under-glow (menu, CTAs) ---------- */
+.glow-pill {
+  border: 1px solid transparent;
+  background:
+    radial-gradient(55% 90% at 18% 120%, rgb(47 140 255 / 0.3), transparent 70%) padding-box,
+    radial-gradient(55% 90% at 82% 120%, rgb(255 45 85 / 0.3), transparent 70%) padding-box,
+    linear-gradient(var(--color-ink), var(--color-ink)) padding-box,
+    linear-gradient(90deg, rgb(70 160 255 / 0.9), rgb(255 255 255 / 0.35) 50%, rgb(255 60 95 / 0.9)) border-box;
+  box-shadow: -8px 8px 22px -14px rgb(47 140 255 / 0.8), 8px 8px 22px -14px rgb(255 45 85 / 0.8);
+  transition: box-shadow 0.4s var(--ease-premium);
+}
+.glow-pill:hover {
+  box-shadow: -8px 8px 26px -10px rgb(47 140 255 / 0.9), 8px 8px 26px -10px rgb(255 45 85 / 0.9);
 }
 
 /* ---------- Education: gradient border that follows the mouse ---------- */

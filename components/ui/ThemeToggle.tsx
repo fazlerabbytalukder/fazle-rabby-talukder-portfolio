@@ -18,7 +18,7 @@ export default function ThemeToggle() {
     <button
       onClick={toggle}
       aria-label="Toggle light and dark theme"
-      className="grid h-[34px] w-[34px] place-items-center rounded-full border border-white/20 transition-colors hover:border-white/60 hover:bg-white/5"
+      className="glow-pill grid h-[40px] w-[40px] place-items-center rounded-full"
     >
       {/* Shows the theme you'll switch to; CSS picks the icon so SSR markup never mismatches */}
       <Sun className="h-3.5 w-3.5 light:hidden" />
