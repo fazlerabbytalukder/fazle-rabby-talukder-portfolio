@@ -1,0 +1,16 @@
+"use client";
+
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+}
+
+/** Large scroll effects (pinning, big parallax) only run on desktop with motion allowed */
+export const DESKTOP_MOTION = "(min-width: 1024px) and (prefers-reduced-motion: no-preference)";
+/** Lighter scrubbed effects run on every screen size when motion is allowed */
+export const MOTION_OK = "(prefers-reduced-motion: no-preference)";
+
+export { gsap, ScrollTrigger, useGSAP };
