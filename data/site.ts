@@ -5,7 +5,7 @@ export const site = {
   shortName: "Fazle Rabby",
   logo: "FRT",
   role: "Product Manager",
-  email: "hello@example.com",
+  email: "talukderfazlerabby@gmail.com",
   description:
     "Fazle Rabby Talukder — Product Manager building products at the intersection of AI, creativity and technology.",
 };

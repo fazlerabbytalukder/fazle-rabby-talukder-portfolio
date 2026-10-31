@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { DESKTOP_MOTION, gsap, useGSAP } from "@/lib/gsap";
@@ -53,6 +53,19 @@ export default function Hero() {
   const right = useRef<HTMLSpanElement>(null);
   const portrait = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
+  const [hovered, setHovered] = useState(false);
+  const [autoSmile, setAutoSmile] = useState(false);
+  const smiling = hovered || autoSmile;
+
+  // Smile once on its own after the intro animation, then relax (hovering the hero brings it back any time)
+  useEffect(() => {
+    const start = setTimeout(() => setAutoSmile(true), 2200);
+    const end = setTimeout(() => setAutoSmile(false), 5200);
+    return () => {
+      clearTimeout(start);
+      clearTimeout(end);
+    };
+  }, []);
 
   // Scroll: headline halves drift apart, portrait sinks with parallax
   useGSAP(
@@ -80,6 +93,10 @@ export default function Hero() {
     <section
       ref={root}
       id="home"
+      // Move as well as enter: a cursor already resting on the hero at page load never fires "enter"
+      onMouseEnter={() => setHovered(true)}
+      onMouseMove={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       className="relative flex min-h-[100svh] flex-col overflow-hidden pt-24 lg:block lg:h-[calc(var(--u)*54)] lg:min-h-0 lg:pt-0"
     >
       {/* Fluted panel texture + coloured light behind the portrait */}
@@ -121,6 +138,19 @@ export default function Hero() {
               sizes="(min-width: 1024px) 40vw, 80vw"
               draggable={false}
               className="object-contain object-top grayscale contrast-[1.25] brightness-[0.8]"
+            />
+            {/* Smiling version on top — crossfading it reads as the face breaking into a smile */}
+            <Image
+              src={images.heroPortraitSmile}
+              alt=""
+              aria-hidden
+              fill
+              loading="eager"
+              sizes="(min-width: 1024px) 40vw, 80vw"
+              draggable={false}
+              className={`object-contain object-top grayscale contrast-[1.25] brightness-[0.8] transition-opacity duration-700 ease-premium ${
+                smiling ? "opacity-100" : "opacity-0"
+              }`}
             />
             {/* Colour layers clipped to the figure's silhouette (each masked layer blends with the photo itself) */}
             <SilhouetteLayer className="bg-[linear-gradient(100deg,#1fa8ff_0%,#2f8bff_40%,#ff2d55_64%,#ff2d55_100%)] opacity-90 mix-blend-color" />

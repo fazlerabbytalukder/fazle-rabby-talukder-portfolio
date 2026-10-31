@@ -48,9 +48,19 @@ export default function Navbar() {
         }`}
       >
         <nav className="shell flex h-16 items-center justify-between md:h-20">
-          <a href="#home" onClick={(e) => go(e, "#home")} className="font-display text-2xl tracking-wider">
+          <a href="#home" onClick={(e) => go(e, "#home")} className="group relative font-display text-2xl tracking-wider">
             {site.logo}
             <span className="text-neon">.</span>
+            {/* Name tooltip: pops out from the logo's top-right corner with a blur-to-sharp reveal */}
+            <span
+              role="tooltip"
+              className="pointer-events-none absolute left-full top-0 ml-0.5 -translate-x-1 -translate-y-[55%] scale-90 opacity-0 blur-[2px] transition-[opacity,transform,filter] duration-300 ease-premium group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100 group-hover:blur-none group-focus-visible:translate-x-0 group-focus-visible:scale-100 group-focus-visible:opacity-100 group-focus-visible:blur-none origin-bottom-left"
+            >
+              <span className="glow-pill inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-1 font-sans text-[9px] font-semibold uppercase leading-none tracking-[0.12em]">
+                <span className="h-1 w-1 rounded-full bg-neon" />
+                {site.name}
+              </span>
+            </span>
           </a>
           <div className="flex items-center gap-2">
             <ThemeToggle />

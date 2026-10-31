@@ -8,6 +8,8 @@ const unsplash = (id: string, w = 1200) =>
 export const images = {
   // Background removed — transparent PNG cut-out
   heroPortrait: "/images/hero-portrait.png",
+  // Same photo with a smile (AI-edited expression, pixel-aligned to heroPortrait) — crossfaded in the hero
+  heroPortraitSmile: "/images/hero-portrait-smile.png",
   aboutPortrait: unsplash("photo-1500648767791-00dcc994a43e", 500),
   experiencePortrait: unsplash("photo-1506794778202-cad84cf45f1d", 1400),
   ctaPortrait: unsplash("photo-1492562080023-ab3db95bfbce", 1400),
