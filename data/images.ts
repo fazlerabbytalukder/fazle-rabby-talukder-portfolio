@@ -11,7 +11,8 @@ export const images = {
   // Same photo with a smile (AI-edited expression, pixel-aligned to heroPortrait) — crossfaded in the hero
   heroPortraitSmile: "/images/hero-portrait-smile.png",
   aboutPortrait: "/images/about.png",
-  experiencePortrait: unsplash("photo-1506794778202-cad84cf45f1d", 1400),
+  // Background removed — transparent PNG cut-out
+  experiencePortrait: "/images/exp.png",
   ctaPortrait: unsplash("photo-1492562080023-ab3db95bfbce", 1400),
   // CodeCanyon preview banner (590×300 is the largest Envato serves)
   projectQunzo: "/images/projects/qunzo-preview.jpg",

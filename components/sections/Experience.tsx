@@ -93,14 +93,16 @@ export default function Experience() {
               src={images.experiencePortrait}
               alt="Fazle Rabby Talukder portrait"
               flip
+              cutout
+              position="50% top"
               className="h-full w-full"
-              mask="radial-gradient(ellipse 75% 80% at 55% 38%, #000 55%, transparent 100%)"
+              mask="linear-gradient(to bottom, #000 62%, transparent 96%)"
             />
           </Reveal>
           <span
             ref={bigNumber}
             aria-hidden
-            className="pointer-events-none absolute -right-2 bottom-[6%] font-display text-[clamp(8rem,24vw,17rem)] leading-none text-transparent [-webkit-text-stroke:2px_rgba(140,170,255,0.85)] drop-shadow-[0_0_30px_rgba(47,107,255,0.45)]"
+            className="pointer-events-none absolute -right-2 bottom-[6%] font-display text-[clamp(8rem,24vw,17rem)] leading-none text-transparent bg-[linear-gradient(160deg,#FF2D55_0%,#B4246E_45%,#2F6BFF_100%)] bg-clip-text [-webkit-text-stroke:1.5px_rgba(255,255,255,0.9)] [filter:drop-shadow(0_6px_24px_rgba(0,0,0,0.65))_drop-shadow(0_0_30px_rgba(255,45,85,0.35))]"
           >
             {experienceIntro.bigNumber}
           </span>

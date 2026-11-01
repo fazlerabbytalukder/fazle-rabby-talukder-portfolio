@@ -7,30 +7,30 @@ export type Experience = {
 };
 
 export const experienceIntro = {
-  title: "Pushing Boundaries",
-  titleAccent: "Since 2005",
+  title: "Building Digital Experiences",
+  titleAccent: "Since 2023",
   subtitle:
-    "A selection of products and initiatives that illustrate how I approach product leadership, customer discovery, execution, and growth.",
-  bigNumber: "15+",
+    "My journey in frontend development has been driven by a passion for building modern web applications, solving complex problems, and transforming ideas into meaningful digital experiences.",
+  bigNumber: "3+",
 };
 
 export const experience: Experience[] = [
   {
-    role: "CEO and Co-Founder",
-    badge: "2020 — Present",
+    role: "Frontend Developer — Tdevs",
+    badge: "DEC 2024 — PRESENT",
     badgeClass: "bg-neon/90 text-snow",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lorem felis.",
+    text: "Building and maintaining production-grade SaaS and fintech applications using React.js, Next.js, and Tailwind CSS. Working on real-time dashboards, API integrations, and commercial web products.",
   },
   {
-    role: "Lead Product Manager",
-    badge: "2014 — 2020",
+    role: "Frontend Developer — TechSuf",
+    badge: "MAR 2023 — NOV 2024",
     badgeClass: "bg-magenta/90 text-snow",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lorem felis.",
+    text: "Developed responsive web applications and implemented 50+ features across client projects. Collaborated with UI/UX teams and led the Theme Development Team.",
   },
   {
-    role: "Director of Product / Product Manager",
-    badge: "2005 — 2014",
+    role: "B.Sc. in Computer Science & Engineering",
+    badge: "2018 — 2022",
     badgeClass: "bg-electric/90 text-snow",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lorem felis.",
+    text: "Daffodil International University, Dhaka, Bangladesh. Built the academic foundation for my journey in software engineering and web development.",
   },
 ];
