@@ -57,7 +57,8 @@ export default function CTA() {
       >
         <Portrait
           src={images.ctaPortrait}
-          alt="Fazle Rabby Talukder wearing sunglasses"
+          alt="Fazle Rabby Talukder leaning on a stair railing, holding sunglasses"
+          position="48% top"
           className="h-full w-full"
           mask="linear-gradient(to bottom, #000 70%, transparent)"
         />

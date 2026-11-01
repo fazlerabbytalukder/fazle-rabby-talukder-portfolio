@@ -13,7 +13,7 @@ export const images = {
   aboutPortrait: "/images/about.png",
   // Background removed — transparent PNG cut-out
   experiencePortrait: "/images/exp.png",
-  ctaPortrait: unsplash("photo-1492562080023-ab3db95bfbce", 1400),
+  ctaPortrait: "/images/footer.jpg",
   // CodeCanyon preview banner (590×300 is the largest Envato serves)
   projectQunzo: "/images/projects/qunzo-preview.jpg",
   // Full-page screenshot of the live preview site

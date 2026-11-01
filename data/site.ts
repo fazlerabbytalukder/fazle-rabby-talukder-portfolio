@@ -27,8 +27,6 @@ export const footerLinks = [
   { label: "Projects", href: "#projects" },
   { label: "Reviews", href: "#reviews" },
   { label: "Contact Us", href: "#contact" },
-  { label: "Privacy Policy", href: "#" },
-  { label: "Terms & Conditions", href: "#" },
 ];
 
 export const hero = {
@@ -57,11 +55,11 @@ export const cta = {
   bgLineTwo: "Ready",
   title: "Lets Build Something",
   titleAccent: "Meaningful Together",
-  body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor a nulla sit amet porta. Integer placerat placerat. Etiam scelerisque efficitur nulla.",
+  body: "Have an idea, a project, or a challenge in mind? Let's turn it into reality. I’m always excited to collaborate on innovative web projects and build modern, scalable, and user-friendly digital experiences. Let's create something great together!",
 };
 
 export const footer = {
   blurb:
-    "Nam porttitor a nulla sit amet porta. Nam non accumsan leo. Aenean erat augue, interdum eget semper aliquet, condimentum ut nulla.",
+    "Frontend developer crafting fast, responsive, and scalable web experiences with React.js and Next.js — from SaaS platforms to fintech products. Have an idea? Let's build it together.",
   copyright: `Copyright ©2026 ${site.name}. All rights reserved.`,
 };
