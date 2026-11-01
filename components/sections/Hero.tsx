@@ -183,7 +183,7 @@ export default function Hero() {
           {hero.body}
         </motion.p>
         <motion.div {...fadeUp(1.2)} className="mt-7 lg:hidden">
-          <PillButton href="/contact" label="Lets Contact" variant="glow" />
+          <PillButton href="https://drive.google.com/file/d/12WTTEZgWct-YKkRJrY5pkapAnPExsqGo/view?usp=sharing" label="Download CV" variant="glow" external />
         </motion.div>
       </div>
 
@@ -192,7 +192,7 @@ export default function Hero() {
         {...fadeUp(1.2)}
         className="absolute left-1/2 top-[calc(var(--u)*41.9)] z-10 hidden -translate-x-1/2 lg:block"
       >
-        <PillButton href="/contact" label="Lets Contact" variant="glow" />
+        <PillButton href="https://drive.google.com/file/d/12WTTEZgWct-YKkRJrY5pkapAnPExsqGo/view?usp=sharing" label="Download CV" variant="glow" external />
       </motion.div>
       <div className="shell pointer-events-none relative z-10 order-4 flex justify-end pb-12 lg:absolute lg:inset-x-0 lg:top-[calc(var(--u)*36.5)] lg:pb-0">
         <motion.a
