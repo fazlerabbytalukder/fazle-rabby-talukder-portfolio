@@ -10,7 +10,7 @@ export const images = {
   heroPortrait: "/images/hero-portrait.png",
   // Same photo with a smile (AI-edited expression, pixel-aligned to heroPortrait) — crossfaded in the hero
   heroPortraitSmile: "/images/hero-portrait-smile.png",
-  aboutPortrait: unsplash("photo-1500648767791-00dcc994a43e", 500),
+  aboutPortrait: "/images/about.png",
   experiencePortrait: unsplash("photo-1506794778202-cad84cf45f1d", 1400),
   ctaPortrait: unsplash("photo-1492562080023-ab3db95bfbce", 1400),
   projectVideo: unsplash("photo-1496181133206-80ce9b88a853", 1600),

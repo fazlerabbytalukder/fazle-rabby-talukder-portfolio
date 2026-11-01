@@ -33,7 +33,8 @@ export default function SplitText({ text, by = "word", className = "", delay = 0
     : { initial: "hidden", whileInView: "show", viewport: VIEWPORT };
 
   return (
-    <motion.span className={`inline ${className}`} aria-label={text} variants={container} {...trigger}>
+    // Keyed by text so edited copy remounts and replays instead of leaving new words hidden
+    <motion.span key={text} className={`inline ${className}`} aria-label={text} variants={container} {...trigger}>
       {units.map((unit, i) => (
         <Fragment key={i}>
           <span aria-hidden className="inline-block overflow-hidden pb-[0.1em] -mb-[0.1em] align-bottom">

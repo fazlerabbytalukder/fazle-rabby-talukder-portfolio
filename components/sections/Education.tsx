@@ -19,7 +19,7 @@ export default function Education() {
           title="My"
           accent="Education"
           align="center"
-          subtitle="A selection of products and initiatives that illustrate how I approach product leadership, customer discovery, execution, and growth."
+          subtitle="An academic journey that built my foundation in computer science, problem-solving, and technology."
         />
 
         <div className="mt-14 grid gap-4 md:grid-cols-3 md:gap-5">

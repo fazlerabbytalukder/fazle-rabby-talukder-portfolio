@@ -7,24 +7,23 @@ export type Education = {
 
 export const education: Education[] = [
   {
-    degree: "B.S. in Computer Science",
-    school: "Demo University",
-    years: "2001 — 2005",
+    degree: "Secondary School Certificate (SSC)",
+    school: "Bhuapur Pilot High School",
+    years: "2014 (GPA-5.0)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus magna vitae lorem tristique.",
+      "Completed secondary education with an excellent academic result.",
   },
   {
-    degree: "M.S. Coursework in Machine Learning",
-    school: "Institute of Technology",
-    years: "2008 — 2010",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus magna vitae lorem tristique.",
+    degree: "Higher Secondary Certificate (HSC)",
+    school: "Ibrahim Khan Government College",
+    years: "2016 (GPA-5.0)",
+    description: "Completed higher secondary education with a perfect GPA.",
   },
   {
-    degree: "B.A. in Digital Video & Cinema",
-    school: "School of Arts",
-    years: "2011 — 2013",
+    degree: "B.Sc. in CSE",
+    school: "Daffodil International University",
+    years: "2022 (GPA-3.75)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus magna vitae lorem tristique.",
+      "Studied computer science and engineering, developing a foundation in software development and technology.",
   },
 ];

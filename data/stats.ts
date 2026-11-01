@@ -10,9 +10,36 @@ export type Stat = {
 };
 
 export const stats: Stat[] = [
-  { value: "10+", label: "Years of Experience", gradient: true, from: "left", place: "lg:col-start-1 lg:row-start-1" },
-  { value: "25+", label: "Products Launched", from: "down", place: "lg:col-start-2 lg:row-start-1" },
-  { value: "$50M+", label: "Revenue Impact", from: "left", place: "lg:col-start-1 lg:row-start-2" },
-  { value: "20M+", label: "Users Reached", gradient: true, from: "right", place: "lg:col-start-3 lg:row-start-2" },
-  { value: "5", label: "Industries Impacted", from: "up", place: "lg:col-start-2 lg:row-start-3" },
+  {
+    value: "3+",
+    label: "Years of Experience",
+    gradient: true,
+    from: "left",
+    place: "lg:col-start-1 lg:row-start-1",
+  },
+  {
+    value: "50+",
+    label: "FEATURES IMPLEMENTED",
+    from: "down",
+    place: "lg:col-start-2 lg:row-start-1",
+  },
+  {
+    value: "2+",
+    label: "COMMERCIAL PRODUCTS",
+    from: "left",
+    place: "lg:col-start-1 lg:row-start-2",
+  },
+  {
+    value: "3",
+    label: "CORE SPECIALIZATIONS",
+    gradient: true,
+    from: "right",
+    place: "lg:col-start-3 lg:row-start-2",
+  },
+  {
+    value: "3",
+    label: "PROFESSIONAL COMPANIES",
+    from: "up",
+    place: "lg:col-start-2 lg:row-start-3",
+  },
 ];

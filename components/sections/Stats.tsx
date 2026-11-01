@@ -65,9 +65,10 @@ export default function Stats() {
               <Portrait
                 src={images.aboutPortrait}
                 alt="Fazle Rabby Talukder"
-                sizes="160px"
+                sizes="(min-width: 640px) 208px, 176px"
                 flip
-                className="h-44 w-36 rounded-sm sm:h-52 sm:w-40"
+                position="65% 30%"
+                className="h-56 w-44 rounded-sm sm:h-72 sm:w-52"
               />
             </Reveal>
           </div>

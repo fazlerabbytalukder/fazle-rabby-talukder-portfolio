@@ -107,7 +107,7 @@ export default function Expertise() {
                 className={`absolute top-0 h-px w-16 bg-gradient-to-r ${i % 2 ? "right-6 from-electric to-transparent" : "left-6 from-neon to-transparent"}`}
               />
               <h3 className="font-display text-3xl uppercase leading-none tracking-wide">{item.title}</h3>
-              <p className="mt-3 text-xs leading-relaxed text-muted">{item.text}</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted md:text-[15px]">{item.text}</p>
             </article>
           ))}
         </div>

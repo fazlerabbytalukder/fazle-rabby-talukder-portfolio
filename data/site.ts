@@ -41,14 +41,15 @@ export const hero = {
 };
 
 export const about = {
-  title: "From Product Vision to",
-  titleAccent: "Product Reality",
+  title: "Building SaaS, fintech, and scalable web experiences",
+  titleAccent: "With Digital Innovation",
   paragraphs: [
-    "I'm a product leader focused on building technology products that solve meaningful problems while creating sustainable business value.",
-    "My career has spanned AI platforms, SaaS products, creative tools, media technology, and emerging consumer experiences. Across every role, I've been drawn to the same challenge.",
-    "I enjoy navigating ambiguity, uncovering customer needs, aligning teams around a shared vision, and turning ideas into products that people genuinely want to use.",
+    "I'm a frontend-focused full-stack developer with 3+ years of experience building modern, responsive, and scalable web applications.",
+    "My journey spans SaaS platforms, fintech applications, and commercial digital products. I specialize in React.js and Next.js, transforming complex ideas and UI/UX designs into seamless, high-performing user experiences.",
+    "At Tdevs, I've worked on production-grade LMS platforms, fintech systems with real-time dashboards, and commercial products published on CodeCanyon. I enjoy solving complex problems, building reusable interfaces, and collaborating with teams to bring products to life.",
   ],
-  highlight: "Transforming uncertainty into clear product direction.",
+  highlight:
+    "Turning ideas into impactful digital products through clean code and thoughtful engineering.",
 };
 
 export const cta = {

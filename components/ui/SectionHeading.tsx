@@ -21,12 +21,17 @@ export default function SectionHeading({ title, accent, subtitle, align = "left"
     <div className={`${centered ? "mx-auto text-center" : ""} max-w-xl ${className}`}>
       <h2 className="text-4xl font-light leading-[1.05] tracking-tight md:text-5xl">
         <SplitText text={title} />
-        {accent && (
-          <>
-            {breakAccent ? <br /> : " "}
-            <SplitText text={accent} className="font-serif italic" delay={0.2} />
-          </>
-        )}
+        {accent &&
+          (breakAccent ? (
+            <span className="mt-3 block md:mt-4">
+              <SplitText text={accent} className="font-serif italic" delay={0.2} />
+            </span>
+          ) : (
+            <>
+              {" "}
+              <SplitText text={accent} className="font-serif italic" delay={0.2} />
+            </>
+          ))}
       </h2>
       {subtitle && (
         <Reveal delay={0.25} y={20}>

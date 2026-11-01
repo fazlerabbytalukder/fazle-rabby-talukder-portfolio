@@ -8,28 +8,28 @@ export type Expertise = {
 export const expertiseIntro = {
   title: "Areas of",
   titleAccent: "Expertise",
-  body: "Fusce eu orci in quam euismod rutrum at sed neque. Aliquam non eros leo. Proin accumsan quam at amet arcu pharetra, sit amet tincidunt velit iaculis.",
+  body: "I specialize in building modern web experiences that combine clean code, thoughtful design, and powerful functionality. From SaaS platforms to fintech solutions, I turn complex ideas into scalable, user-friendly applications.",
 };
 
 export const expertise: Expertise[] = [
   {
-    title: "Artificial Intelligence",
-    text: "Mauris congue a mi eu varius. Vivamus consequat lacus quis nunc ultricies, at vehicula libero pharetra.",
+    title: "FRONTEND ENGINEERING",
+    text: "Building modern, scalable web applications using React.js, Next.js, JavaScript, and Tailwind CSS.",
     corner: "lg:left-0 lg:top-[12%]",
   },
   {
-    title: "Creative Technology",
-    text: "Mauris congue a mi eu varius. Vivamus consequat lacus quis nunc ultricies, at vehicula libero pharetra.",
+    title: "SAAS & FINTECH DEVELOPMENT",
+    text: "Developing production-ready SaaS platforms, fintech applications, dashboards, and complex transaction workflows.",
     corner: "lg:right-0 lg:top-[12%] lg:text-right",
   },
   {
-    title: "User Experience",
-    text: "Mauris congue a mi eu varius. Vivamus consequat lacus quis nunc ultricies, at vehicula libero pharetra.",
+    title: "USER EXPERIENCE & INTERFACES",
+    text: "Creating responsive, intuitive, and accessible user interfaces with a strong focus on usability and performance.",
     corner: "lg:left-0 lg:bottom-[12%]",
   },
   {
-    title: "Product Strategy",
-    text: "Mauris congue a mi eu varius. Vivamus consequat lacus quis nunc ultricies, at vehicula libero pharetra.",
+    title: "PRODUCT DEVELOPMENT",
+    text: "Turning ideas into real-world products through API integration, state management, reusable components, and scalable frontend architecture.",
     corner: "lg:right-0 lg:bottom-[12%] lg:text-right",
   },
 ];
