@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 type Props = {
   text: string;
@@ -12,20 +12,21 @@ type Props = {
 
 /** Circular text that spins continuously around an icon */
 export default function RotatingBadge({ text, size = 120, className = "", children }: Props) {
-  const id = `badge-${useId().replace(/:/g, "")}`;
+  const chars = Array.from(text);
 
   return (
     <div className={`relative shrink-0 ${className}`} style={{ width: size, height: size }}>
       <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full animate-spin-slow" aria-hidden>
-        <defs>
-          <path id={id} d="M50,50 m-40,0 a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0" />
-        </defs>
-        {/* whiteSpace: pre keeps the trailing space, so the last separator sits evenly between words */}
-        <text className="fill-white/80 font-sans text-[8px] font-medium uppercase" style={{ whiteSpace: "pre" }}>
-          <textPath href={`#${id}`} textLength="250" lengthAdjust="spacing">
-            {text}
-          </textPath>
-        </text>
+        {/* One glyph per evenly spaced angle: Firefox ignores textLength on textPath, so the text wouldn't fill the circle */}
+        <g className="fill-white/80 font-sans text-[8px] font-medium uppercase">
+          {chars.map((char, i) =>
+            char === " " ? null : (
+              <text key={i} x="50" y="10" textAnchor="middle" transform={`rotate(${(i * 360) / chars.length} 50 50)`}>
+                {char}
+              </text>
+            )
+          )}
+        </g>
       </svg>
       <div className="absolute inset-[26%] grid place-items-center rounded-full border border-white/15 text-white">
         {children}
