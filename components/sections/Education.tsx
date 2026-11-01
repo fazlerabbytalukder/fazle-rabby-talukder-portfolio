@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { education, type Education as EducationItem } from "@/data/education";
+import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 /** Updates the CSS vars that position the hover glow (see .glow-card in globals.css) */
 function trackMouse(e: React.MouseEvent<HTMLElement>) {
@@ -20,6 +20,7 @@ function EducationCard({ item, index, side, progress }: { item: EducationItem; i
   const y = useTransform(progress, [0, 1], [80 + Math.abs(side) * 40, 0]);
   const rotate = useTransform(progress, [0, 1], [side * 5, 0]);
   const opacity = useTransform(progress, [0, 0.6], [0, 1]);
+
 
   return (
     <motion.article
