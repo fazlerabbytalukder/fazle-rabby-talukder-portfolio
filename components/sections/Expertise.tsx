@@ -86,7 +86,7 @@ export default function Expertise() {
               </h2>
               <p className="mx-auto mt-4 max-w-xs text-xs leading-relaxed text-muted md:text-sm">{expertiseIntro.body}</p>
               <div className="mt-6">
-                <PillButton href="#contact" label="Get Started" />
+                <PillButton href="/contact" label="Get Started" />
               </div>
             </div>
           </div>

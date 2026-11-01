@@ -36,7 +36,8 @@ export default function Navbar() {
   const onHome = usePathname() === "/";
   const go = (e: React.MouseEvent, href: string) => {
     setOpen(false);
-    if (!onHome) return;
+    // Real pages (e.g. /contact) and off-home section links navigate normally
+    if (!onHome || !href.startsWith("#")) return;
     e.preventDefault();
     // Wait for the overlay to start closing before scrolling
     setTimeout(() => scrollToHash(href), 150);
@@ -113,7 +114,7 @@ export default function Navbar() {
               {navLinks.map((link, i) => (
                 <li key={link.href} className="overflow-hidden">
                   <motion.a
-                    href={`/${link.href}`}
+                    href={link.href.startsWith("#") ? `/${link.href}` : link.href}
                     onClick={(e) => go(e, link.href)}
                     initial={{ y: "110%" }}
                     animate={{ y: "0%" }}

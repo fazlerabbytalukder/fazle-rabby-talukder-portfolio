@@ -82,7 +82,7 @@ export default function Experience() {
           </div>
 
           <Reveal y={20} className="mt-6">
-            <PillButton href="#contact" label="Get Started" />
+            <PillButton href="/contact" label="Get Started" />
           </Reveal>
         </div>
 

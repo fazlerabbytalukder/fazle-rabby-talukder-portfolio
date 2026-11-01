@@ -6,6 +6,8 @@ export const site = {
   logo: "FRT",
   role: "Product Manager",
   email: "talukderfazlerabby@gmail.com",
+  phone: "+880 1739-719796",
+  location: "Tangail, Dhaka, Bangladesh",
   description:
     "Fazle Rabby Talukder — Product Manager building products at the intersection of AI, creativity and technology.",
 };
@@ -17,8 +19,24 @@ export const navLinks = [
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
   { label: "Reviews", href: "#reviews" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact" },
 ];
+
+export const socials = [
+  { label: "GitHub", href: "https://github.com/fazlerabbytalukder" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/fazle-rabby-talukder/" },
+  { label: "Fiverr", href: "https://www.fiverr.com/analogiatech?public_mode=true" },
+  { label: "Facebook", href: "https://www.facebook.com/frtfazlerabby/" },
+];
+
+export const contactPage = {
+  eyebrow: "Get In Touch",
+  title: "Let's Start a",
+  titleAccent: "Conversation",
+  subtitle:
+    "Have a project, a role, or an idea you'd like to talk through? Send a message and I'll get back to you within 24 hours.",
+  subjects: ["New Project", "Job Opportunity", "Freelance Work", "Collaboration", "Just Saying Hi"],
+};
 
 export const footerLinks = [
   { label: "Home", href: "#home" },
@@ -26,7 +44,7 @@ export const footerLinks = [
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Reviews", href: "#reviews" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export const hero = {

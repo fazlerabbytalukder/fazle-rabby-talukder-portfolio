@@ -8,7 +8,7 @@ import Portrait from "@/components/ui/Portrait";
 import RotatingBadge from "@/components/motion/RotatingBadge";
 import Reveal from "@/components/motion/Reveal";
 import { ArrowUpRight } from "@/components/ui/Icons";
-import { cta, site } from "@/data/site";
+import { cta } from "@/data/site";
 import { images } from "@/data/images";
 
 export default function CTA() {
@@ -71,11 +71,11 @@ export default function CTA() {
             <p className="mt-5 text-sm leading-relaxed text-muted">{cta.body}</p>
           </Reveal>
           <Reveal y={20} delay={0.3} className="mt-7">
-            <PillButton href={`mailto:${site.email}`} label="Contact Me" variant="glow" />
+            <PillButton href="/contact" label="Contact Me" variant="glow" />
           </Reveal>
         </div>
         <Reveal delay={0.3} className="self-end">
-          <a href={`mailto:${site.email}`} aria-label="Contact me">
+          <a href="/contact" aria-label="Contact me">
             <RotatingBadge text="Contact Me • Contact Me • " size={130}>
               <ArrowUpRight className="h-5 w-5" />
             </RotatingBadge>
