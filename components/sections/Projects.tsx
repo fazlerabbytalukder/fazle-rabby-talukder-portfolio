@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import Reveal from "@/components/motion/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import PillButton from "@/components/ui/PillButton";
@@ -10,24 +10,60 @@ import { Plus } from "@/components/ui/Icons";
 import { projects, projectsIntro, type Project } from "@/data/projects";
 import { EASE, VIEWPORT } from "@/lib/motion";
 
-function ProjectRow({ project, reverse }: { project: Project; reverse: boolean }) {
+/** Stacking only kicks in on desktop, where each 540px card fits on screen */
+function useIsDesktop() {
+  const [desktop, setDesktop] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const update = () => setDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  return desktop;
+}
+
+type RowProps = {
+  project: Project;
+  index: number;
+  total: number;
+  reverse: boolean;
+  /** Scroll progress through the whole stack */
+  stackProgress: MotionValue<number>;
+  stacking: boolean;
+};
+
+function ProjectRow({ project, index, total, reverse, stackProgress, stacking }: RowProps) {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   // Image drifts inside its frame for parallax
   const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
+  // Once the next card starts covering this one, shrink and dim it so the stack reads as depth
+  // Progress spans the stack's full height, so card i pins at i/n and the last card pins at (n-1)/n
+  const behind = total - 1 - index;
+  const start = index / total;
+  const end = Math.max((total - 1) / total, start + 0.001);
+  const scale = useTransform(stackProgress, [start, end], [1, 1 - behind * 0.05]);
+  const dim = useTransform(stackProgress, [start, end], [0, behind * 0.25]);
+  const stacked = stacking && !reduce && behind > 0;
+
   // Wipe in from the side nearest the page edge
   const hiddenClip = reverse ? "inset(0 0 0 100%)" : "inset(0 100% 0 0)";
 
   return (
-    <article ref={ref} className="grid lg:grid-cols-2">
+    <motion.article
+      ref={ref}
+      style={stacked ? { scale } : undefined}
+      className="relative grid origin-top bg-ink lg:sticky lg:top-0 lg:h-[540px] lg:grid-cols-2 lg:overflow-hidden lg:rounded-t-3xl lg:shadow-[0_-30px_60px_-20px_rgba(0,0,0,0.7)]"
+    >
       {/* Observe the unclipped frame: a fully clipped element has no visible area, so it may never register as in view */}
       <motion.div
         initial="hidden"
         whileInView="show"
         viewport={VIEWPORT}
-        className={`group relative min-h-[320px] overflow-hidden sm:min-h-[420px] lg:min-h-[540px] ${reverse ? "lg:order-2" : ""}`}
+        className={`group relative min-h-[320px] overflow-hidden sm:min-h-[420px] lg:h-full lg:min-h-0 ${reverse ? "lg:order-2" : ""}`}
       >
         <motion.div
           className="absolute inset-0"
@@ -79,11 +115,18 @@ function ProjectRow({ project, reverse }: { project: Project; reverse: boolean }
           </Reveal>
         </div>
       </div>
-    </article>
+
+      {/* Darkens as later cards stack on top */}
+      {stacked && <motion.div aria-hidden style={{ opacity: dim }} className="pointer-events-none absolute inset-0 z-10 bg-black" />}
+    </motion.article>
   );
 }
 
 export default function Projects() {
+  const stackRef = useRef<HTMLDivElement>(null);
+  const stacking = useIsDesktop();
+  const { scrollYProgress } = useScroll({ target: stackRef, offset: ["start start", "end start"] });
+
   return (
     <section id="projects" className="relative pt-24 lg:pt-32">
       <div className="shell mb-14 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
@@ -93,9 +136,18 @@ export default function Projects() {
         </Reveal>
       </div>
 
-      <div className="flex flex-col">
+      {/* Sticky cards: each pins to the top while the next slides up over it; the page moves on after the last */}
+      <div ref={stackRef} className="relative flex flex-col">
         {projects.map((p, i) => (
-          <ProjectRow key={p.title} project={p} reverse={i % 2 === 1} />
+          <ProjectRow
+            key={p.title}
+            project={p}
+            index={i}
+            total={projects.length}
+            reverse={i % 2 === 1}
+            stackProgress={scrollYProgress}
+            stacking={stacking}
+          />
         ))}
       </div>
     </section>

@@ -48,4 +48,14 @@ export const projects: Project[] = [
     href: "https://xanzu-preview.tdevs.co/",
     panel: "force-dark bg-[linear-gradient(135deg,#1a0b2e_0%,#4a0f3f_55%,#0d1a52_100%)]",
   },
+  {
+    label: "Coworking Space · Multi-Location",
+    title: "Temporix – Coworking Space",
+    text: "A coworking space website with multi-location support, letting freelancers, remote workers, and startups explore spaces, book tours, and choose membership plans.",
+    results: ["Role: Front-End Developer at Tdevs", "Next.js, MongoDB & Tailwind CSS", "Multi-location booking flow"],
+    image: images.projectTemporix,
+    imageAlt: "Temporix coworking space landing page",
+    href: "https://temporix-preview.tdevs.co/",
+    panel: "force-dark bg-[linear-gradient(135deg,#0A0F2E_0%,#132066_50%,#3d0b33_100%)]",
+  },
 ];

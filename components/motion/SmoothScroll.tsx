@@ -42,7 +42,22 @@ export default function SmoothScroll() {
     const refresh = () => ScrollTrigger.refresh();
     window.addEventListener("load", refresh);
 
+    // Trigger positions are measured once; any later height change (late images, fonts,
+    // re-rendered sections, hot reload) would leave them stale, so re-measure on resize of the page
+    let timer: ReturnType<typeof setTimeout>;
+    let lastHeight = document.body.scrollHeight;
+    const observer = new ResizeObserver(() => {
+      const height = document.body.scrollHeight;
+      if (height === lastHeight) return;
+      lastHeight = height;
+      clearTimeout(timer);
+      timer = setTimeout(refresh, 200);
+    });
+    observer.observe(document.body);
+
     return () => {
+      observer.disconnect();
+      clearTimeout(timer);
       window.removeEventListener("load", refresh);
       gsap.ticker.remove(raf);
       lenis.destroy();

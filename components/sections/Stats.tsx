@@ -2,6 +2,7 @@
 
 import Reveal from "@/components/motion/Reveal";
 import CountUp from "@/components/motion/CountUp";
+import Parallax from "@/components/motion/Parallax";
 import RotatingBadge from "@/components/motion/RotatingBadge";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Portrait from "@/components/ui/Portrait";
@@ -17,6 +18,10 @@ const offsets: Record<Stat["from"], { x: number; y: number }> = {
   down: { x: 0, y: -60 },
 };
 
+// Scroll drift per grid column: outer columns float up, the middle one lags behind
+const driftByColumn = [0.12, -0.06, 0.18];
+const columnOf = (place: string) => Number(place.match(/col-start-(\d)/)?.[1] ?? 1) - 1;
+
 export default function Stats() {
   return (
     <section id="about" className="relative overflow-x-clip pt-24 lg:pt-32">
@@ -25,18 +30,21 @@ export default function Stats() {
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 lg:grid-rows-3">
           {stats.map((s, i) => (
             <Reveal key={s.label} {...offsets[s.from]} delay={i * 0.1} className={s.place}>
-              <div
-                className={`flex aspect-square flex-col justify-between rounded-sm p-4 sm:p-5 ${
-                  s.gradient
-                    ? "force-dark bg-[linear-gradient(160deg,#FF2D55_0%,#B4246E_45%,#2F6BFF_100%)] shadow-[0_20px_60px_-20px_rgba(255,45,85,0.5)]"
-                    : "border border-white/10 bg-white/[0.03] backdrop-blur"
-                }`}
-              >
-                <CountUp value={s.value} className="font-display text-5xl leading-none sm:text-6xl" />
-                <span className={`text-[10px] uppercase tracking-[0.18em] ${s.gradient ? "text-white/85" : "text-muted"}`}>
-                  {s.label}
-                </span>
-              </div>
+              {/* Columns drift at different speeds while scrolling, giving the checkerboard depth */}
+              <Parallax speed={driftByColumn[columnOf(s.place)]}>
+                <div
+                  className={`flex aspect-square flex-col justify-between rounded-sm p-4 sm:p-5 ${
+                    s.gradient
+                      ? "force-dark bg-[linear-gradient(160deg,#FF2D55_0%,#B4246E_45%,#2F6BFF_100%)] shadow-[0_20px_60px_-20px_rgba(255,45,85,0.5)]"
+                      : "border border-white/10 bg-white/[0.03] backdrop-blur"
+                  }`}
+                >
+                  <CountUp value={s.value} className="font-display text-5xl leading-none sm:text-6xl" />
+                  <span className={`text-[10px] uppercase tracking-[0.18em] ${s.gradient ? "text-white/85" : "text-muted"}`}>
+                    {s.label}
+                  </span>
+                </div>
+              </Parallax>
             </Reveal>
           ))}
         </div>

@@ -17,6 +17,7 @@ export const images = {
   projectQunzo: "/images/projects/qunzo-preview.jpg",
   // Full-page screenshot of the live preview site
   projectXanzu: "/images/projects/xanzu-live.png",
+  projectTemporix: "/images/projects/temporix.png",
   avatars: [
     unsplash("photo-1494790108377-be9c29b29330", 160),
     unsplash("photo-1472099645785-5658abf4ff4e", 160),
