@@ -13,9 +13,10 @@ export const images = {
   aboutPortrait: "/images/about.png",
   experiencePortrait: unsplash("photo-1506794778202-cad84cf45f1d", 1400),
   ctaPortrait: unsplash("photo-1492562080023-ab3db95bfbce", 1400),
-  projectVideo: unsplash("photo-1496181133206-80ce9b88a853", 1600),
-  projectSaas: unsplash("photo-1551288049-bebda4e38f71", 1600),
-  projectAssistant: unsplash("photo-1511707171634-5f897ff02aa9", 1600),
+  // CodeCanyon preview banner (590×300 is the largest Envato serves)
+  projectQunzo: "/images/projects/qunzo-preview.jpg",
+  // Full-page screenshot of the live preview site
+  projectXanzu: "/images/projects/xanzu-live.png",
   avatars: [
     unsplash("photo-1494790108377-be9c29b29330", 160),
     unsplash("photo-1472099645785-5658abf4ff4e", 160),

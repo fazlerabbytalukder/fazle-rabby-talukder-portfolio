@@ -22,22 +22,34 @@ function ProjectRow({ project, reverse }: { project: Project; reverse: boolean }
 
   return (
     <article ref={ref} className="grid lg:grid-cols-2">
-      <div className={`group relative min-h-[320px] overflow-hidden sm:min-h-[420px] lg:min-h-[540px] ${reverse ? "lg:order-2" : ""}`}>
+      {/* Observe the unclipped frame: a fully clipped element has no visible area, so it may never register as in view */}
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={VIEWPORT}
+        className={`group relative min-h-[320px] overflow-hidden sm:min-h-[420px] lg:min-h-[540px] ${reverse ? "lg:order-2" : ""}`}
+      >
         <motion.div
           className="absolute inset-0"
-          initial={{ clipPath: reduce ? "inset(0 0 0 0)" : hiddenClip, opacity: reduce ? 0 : 1 }}
-          whileInView={{ clipPath: "inset(0 0% 0 0%)", opacity: 1 }}
-          viewport={VIEWPORT}
-          transition={{ duration: 1.3, ease: EASE }}
+          variants={{
+            hidden: { clipPath: reduce ? "inset(0 0 0 0)" : hiddenClip, opacity: reduce ? 0 : 1 },
+            show: { clipPath: "inset(0 0% 0 0%)", opacity: 1, transition: { duration: 1.3, ease: EASE } },
+          }}
         >
           <motion.div className="absolute inset-x-0 -inset-y-[10%]" style={reduce ? undefined : { y }}>
             <div className="relative h-full w-full transition-transform duration-[1.2s] ease-premium group-hover:scale-105">
-              <Image src={project.image} alt={project.imageAlt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+              <Image
+                src={project.image}
+                alt={project.imageAlt}
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover object-top"
+              />
             </div>
           </motion.div>
           <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent" />
         </motion.div>
-      </div>
+      </motion.div>
 
       <div className={`relative flex flex-col justify-center px-6 py-14 sm:px-10 lg:px-16 lg:py-20 ${project.panel}`}>
         <div className="max-w-md">
@@ -63,7 +75,7 @@ function ProjectRow({ project, reverse }: { project: Project; reverse: boolean }
             ))}
           </ul>
           <Reveal y={16} delay={0.5} className="mt-8">
-            <PillButton href={project.href} label="View Case Study" />
+            <PillButton href={project.href} label="View Live Project" external />
           </Reveal>
         </div>
       </div>
@@ -77,7 +89,7 @@ export default function Projects() {
       <div className="shell mb-14 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <SectionHeading title={projectsIntro.title} accent={projectsIntro.titleAccent} subtitle={projectsIntro.subtitle} />
         <Reveal y={20}>
-          <PillButton href="#projects" label="View All" />
+          <PillButton href="/projects" label="View All Projects" />
         </Reveal>
       </div>
 

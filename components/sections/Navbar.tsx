@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { getLenis, scrollToHash } from "@/components/motion/SmoothScroll";
 import { Close, Menu } from "@/components/ui/Icons";
@@ -31,9 +32,12 @@ export default function Navbar() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  // Section links point at the home page; only smooth-scroll when already on it
+  const onHome = usePathname() === "/";
   const go = (e: React.MouseEvent, href: string) => {
-    e.preventDefault();
     setOpen(false);
+    if (!onHome) return;
+    e.preventDefault();
     // Wait for the overlay to start closing before scrolling
     setTimeout(() => scrollToHash(href), 150);
   };
@@ -48,7 +52,7 @@ export default function Navbar() {
         }`}
       >
         <nav className="shell flex h-16 items-center justify-between md:h-20">
-          <a href="#home" onClick={(e) => go(e, "#home")} className="group relative font-display text-2xl tracking-wider">
+          <a href="/#home" onClick={(e) => go(e, "#home")} className="group relative font-display text-2xl tracking-wider">
             {site.logo}
             <span className="text-neon">.</span>
             {/* Name tooltip: pops out from the logo's top-right corner with a blur-to-sharp reveal */}
@@ -109,7 +113,7 @@ export default function Navbar() {
               {navLinks.map((link, i) => (
                 <li key={link.href} className="overflow-hidden">
                   <motion.a
-                    href={link.href}
+                    href={`/${link.href}`}
                     onClick={(e) => go(e, link.href)}
                     initial={{ y: "110%" }}
                     animate={{ y: "0%" }}

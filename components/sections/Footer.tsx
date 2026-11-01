@@ -19,7 +19,7 @@ export default function Footer() {
           <ul className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-xs text-white/70 md:justify-between">
             {footerLinks.map((l) => (
               <li key={l.label}>
-                <a href={l.href} className="transition-colors hover:text-white">
+                <a href={l.href.startsWith("#") && l.href !== "#" ? `/${l.href}` : l.href} className="transition-colors hover:text-white">
                   {l.label}
                 </a>
               </li>
