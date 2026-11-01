@@ -1,28 +1,69 @@
-import { images } from "./images";
-
 export type Testimonial = {
-  heading: string;
   text: string;
+  /** Client's username as shown on the review platform */
   name: string;
-  role: string;
-  avatar: string;
+  location: string;
+  /** Review platform; null hides the source badge */
+  source: string | null;
+  sourceUrl: string | null;
+  /** Layout filler: shown in local dev only, never in the production build */
+  isPlaceholder?: boolean;
 };
 
 export const testimonialsIntro = {
-  title: "What Our Clients Are",
-  titleAccent: "Saying About Us",
+  title: "What My Clients Are",
+  titleAccent: "Saying About Me",
   subtitle:
-    "Nam porttitor a nulla sit amet porta. Nam non accumsan leo. Aenean erat augue, interdum eget semper aliquet, condimentum ut nulla.",
+    "Verified reviews from clients I've worked with on Fiverr — real projects, real feedback.",
 };
 
-const text =
-  "Able to balance strategy, execution, and stakeholder alignment exceptionally well.";
+const fiverr = "https://www.fiverr.com/analogiatech?public_mode=true";
 
+// Real client reviews from Fiverr (via the previous portfolio's About page)
 export const testimonials: Testimonial[] = [
-  { heading: "One of the strongest product thinkers I've worked with.", text, name: "Martha Conroy", role: "Former Associate", avatar: images.avatars[0] },
-  { heading: "Consistently brought clarity to complex product challenges.", text, name: "George Matthews", role: "Former Associate", avatar: images.avatars[1] },
-  { heading: "One of the strongest product thinkers I've worked with.", text, name: "Jennifer Holden", role: "Former Associate", avatar: images.avatars[2] },
-  { heading: "Turned a vague idea into a product customers loved.", text, name: "Daniel Brooks", role: "VP Engineering", avatar: images.avatars[3] },
-  { heading: "A rare mix of vision, empathy and relentless execution.", text, name: "Christina James", role: "Head of Design", avatar: images.avatars[4] },
-  { heading: "Our roadmap finally made sense to everyone in the room.", text, name: "Sofia Bennett", role: "Founder", avatar: images.avatars[5] },
+  {
+    text: "Fazle was hired for our website project, which had some complex animations and graphics. We experienced great communication throughout the process and the results incorporated our feedback each time. The work quality and work ethics are commendable and we would use the service again!",
+    name: "rarchtech",
+    location: "United States",
+    source: "Fiverr",
+    sourceUrl: fiverr,
+  },
+  {
+    text: "Great and professional developer. He was able to convert my canva design/images into a web page flawlessly. Highly recommend and will be coming back for more services!",
+    name: "miburi",
+    location: "United States",
+    source: "Fiverr",
+    sourceUrl: fiverr,
+  },
+  {
+    text: "It was fast delivery and full communication. Thanks in advance",
+    name: "gbrakos",
+    location: "Greece",
+    source: "Fiverr",
+    sourceUrl: fiverr,
+  },
+  {
+    text: "Fazle did an excellent job bringing our vision to life. The website was clean, responsive, and beautifully structured. His attention to detail and technical skills made the entire process smooth.",
+    name: "Ernest T. Murphy",
+    location: "United States",
+    isPlaceholder: true,
+    source: null,
+    sourceUrl: null,
+  },
+  {
+    text: "Really impressed with the quality of work. Communication was smooth, updates were consistent, and every requirement was handled professionally. Would definitely recommend his development skills.",
+    name: "Mae K. Morton",
+    location: "United Kingdom",
+    isPlaceholder: true,
+    source: null,
+    sourceUrl: null,
+  },
+  {
+    text: "A talented frontend developer with great problem-solving skills. The final result was exactly what we needed, with a modern design and excellent responsiveness across devices.",
+    name: "Victor R. Freeman",
+    location: "Australia",
+    isPlaceholder: true,
+    source: null,
+    sourceUrl: null,
+  },
 ];
