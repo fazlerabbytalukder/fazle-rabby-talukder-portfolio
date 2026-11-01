@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight } from "@/components/ui/Icons";
 import { contactPage, site } from "@/data/site";
@@ -16,6 +16,9 @@ const label = "mb-2 block text-[10px] font-semibold uppercase tracking-[0.22em] 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>({ state: "idle" });
   const [subject, setSubject] = useState(contactPage.subjects[0]);
+  // Set after mount (not during render) so server and client markup match
+  const [startedAt, setStartedAt] = useState("");
+  useEffect(() => setStartedAt(String(Date.now())), [status.state]);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -143,11 +146,22 @@ export default function ContactForm() {
               />
             </div>
 
-            {/* Honeypot — hidden from people, irresistible to bots */}
+            {/* Honeypot — hidden from people, irresistible to bots. Name/label are deliberately meaningless
+                so browser autofill and password managers never fill it (a "company" field got autofilled). */}
             <div aria-hidden className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
-              <label htmlFor="company">Company</label>
-              <input id="company" name="company" tabIndex={-1} autoComplete="off" />
+              <label htmlFor="hp_trap">Leave this empty</label>
+              <input
+                id="hp_trap"
+                name="hp_trap"
+                tabIndex={-1}
+                autoComplete="new-password"
+                data-1p-ignore
+                data-lpignore="true"
+                data-form-type="other"
+              />
             </div>
+            {/* Time the form was shown — submissions in under 2s are bots */}
+            <input type="hidden" name="started" value={startedAt} />
 
             {status.state === "error" && (
               <p role="alert" className="rounded-sm border border-neon/30 bg-neon/10 px-4 py-3 text-sm text-white/90">

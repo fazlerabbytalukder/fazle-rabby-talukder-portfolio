@@ -19,6 +19,20 @@ function rateLimited(ip: string) {
   return recent.length > MAX_PER_WINDOW;
 }
 
+const DEFAULT_FROM = "Portfolio Contact <onboarding@resend.dev>";
+// Resend can only send from domains you've verified — never from a free mailbox like Gmail
+const FREE_MAIL = /@(gmail|googlemail|yahoo|outlook|hotmail|live|icloud|proton(mail)?)\.[a-z.]+>?\s*$/i;
+
+function fromAddress() {
+  const configured = process.env.CONTACT_FROM_EMAIL?.trim();
+  if (!configured) return DEFAULT_FROM;
+  if (FREE_MAIL.test(configured)) {
+    console.warn(`[contact] CONTACT_FROM_EMAIL "${configured}" is a free-mail address Resend can't send from; using ${DEFAULT_FROM}`);
+    return DEFAULT_FROM;
+  }
+  return configured;
+}
+
 const escapeHtml = (s: string) =>
   s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 
@@ -36,8 +50,13 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  // Honeypot: real visitors never fill this hidden field — pretend success so bots move on
-  if (typeof body.company === "string" && body.company.trim()) {
+  // Bot checks: hidden honeypot filled, or submitted faster than a person could type.
+  // Pretend success so bots move on, but log it so a misfire on a real visitor is visible.
+  const trap = typeof body.hp_trap === "string" && body.hp_trap.trim();
+  const started = Number(body.started);
+  const tooFast = Number.isFinite(started) && started > 0 && Date.now() - started < 2000;
+  if (trap || tooFast) {
+    console.warn(`[contact] dropped as bot (${trap ? "honeypot filled" : "submitted too fast"})`);
     return NextResponse.json({ ok: true });
   }
 
@@ -74,7 +93,7 @@ export async function POST(req: Request) {
     method: "POST",
     headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({
-      from: process.env.CONTACT_FROM_EMAIL || "Portfolio Contact <onboarding@resend.dev>",
+      from: fromAddress(),
       to: [process.env.CONTACT_TO_EMAIL || site.email],
       reply_to: email,
       subject: `[Portfolio] ${topic} — ${name}`,
